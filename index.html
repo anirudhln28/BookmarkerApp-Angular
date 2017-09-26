@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Bookmarker App</title>
+  
+  
+  <link rel='stylesheet prefetch' href='http://cdn.jsdelivr.net/foundation/5.1.1/css/foundation.min.css'>
+
+      <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      ul.bookmarks {
+  list-style: none;
+}
+
+ul.bookmarks li {
+  margin-bottom: 5px;
+  border-bottom: 1px solid #ddd;
+  padding: 5px;
+}
+
+ul.bookmarks a {
+  margin-right: 10px;
+}
+
+.likes {
+  width: 30px;
+  margin-right: 3px;
+}
+
+header h3 {
+  line-height: 3em;
+}
+
+.icon-thumbs-up {
+  color: #999;
+  cursor: pointer;
+}
+
+.bookmarks em {
+  color: #666;
+  font-size: 11px;
+}
+
+.icon-trash {
+  color: #c6c6c6;
+  cursor: pointer;
+}
+
+.icon-trash:hover {
+  color: #666;
+}
+    </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+  
+<html lang="en" ng-app ng-controller="appCtrl">
+<head>
+  
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">  
+
+</head>
+<body>
+  
+  <header class="row">
+    
+    <h3>Saved Bookmarks</h3>
+    
+  </header>
+  
+  <div class="row">
+    
+    <div class="large-6 columns">
+      
+      <div class="panel">
+        
+        <input type="text" placeholder="Search Bookmarks" ng-model="search" />
+        
+      </div>      
+      
+	    <ul class="bookmarks">
+		    <li ng-repeat="site in bookmarks | filter: search">
+          <a href="{{ site.url }}">{{ site.title }}</a>
+          <span class="label secondary"> {{site.category}}</span>
+          
+          <i class="right icon-trash" ng-click="deleteBookmark($index)"></i>
+          
+		    </li>
+	    </ul>
+      
+    </div>
+    
+    <div class="large-6 columns">
+      
+      <div class="panel">
+        
+        	<h4>Add Bookmark</h4>
+	    <input type="text" placeholder="Site Name" ng-model="site_name" />
+	<input type="text"  placeholder="URL" ng-model="site_url" />
+<input type="text"  placeholder="Category" ng-model="site_category" />
+	<button ng-click="addBookmark()">Add Bookmark</button>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+</body>
+  
+    <script  src="js/index.js"></script>
+
+</body>
+</html>
